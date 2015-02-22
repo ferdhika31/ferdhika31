@@ -2,7 +2,7 @@
 // Emoticon bar before comment-form
 function rpl4rt()
 {
-window.open("http://smiley.bl.ee","_blank"," width=700, height=400");
+window.open("http://ferdhika31.github.io/emot/","_blank"," width=700, height=400");
 }
 $(function() {
     $(putEmoAbove)
