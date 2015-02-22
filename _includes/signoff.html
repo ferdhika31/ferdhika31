@@ -1,0 +1,14 @@
+<br />
+<p>
+  {% case page.lang %}
+  {% when 'id' %}
+  Sampai jumpa lagi,<br/>
+  <a href="/about">{{ site.signoff }}</a>
+  <span class="muted">{{ page.date | date: "pada %H:%M" }}</span>
+  {% else %}
+  Til next time,<br/>
+  <a href="/about">{{ site.signoff }}</a>
+  <span class="muted">{{ page.date | date: "at %H:%M" }}</span>
+  {% endcase %}
+  
+</p>
