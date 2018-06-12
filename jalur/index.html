@@ -33,29 +33,29 @@
     </head>
     <body>
         <div id="floating-panel">
-            <b>Start: </b>
+            <b>Start <sub style="color:red;">(A)</sub>: </b>
             <select id="start">
-                <option value="-6.9481023,107.6065922" selected>A (Start)</option>
-                <option value="-6.937724999999999,107.6124936">B (End)</option>
-                <option value="-6.938891,107.60621">C (Dalem Jalur)</option>
-                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
-                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+                <option value="-6.9481023,107.6065922" selected>(Start)</option>
+                <option value="-6.937724999999999,107.6124936">(End)</option>
+                <option value="-6.938891,107.60621">(Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">(Luar Jalur)</option>
+                <option value="-6.937560,107.60617">(Lumayan deket Jalur)</option>
             </select>
-            <b>End: </b>
+            <b>End <sub style="color:red;">(B)</sub>: </b>
             <select id="end">
-                <option value="-6.9481023,107.6065922">A (Start)</option>
-                <option value="-6.937724999999999,107.6124936" selected>B (End)</option>
-                <option value="-6.938891,107.60621">C (Dalem Jalur)</option>
-                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
-                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+                <option value="-6.9481023,107.6065922">(Start)</option>
+                <option value="-6.937724999999999,107.6124936" selected>(End)</option>
+                <option value="-6.938891,107.60621">(Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">(Luar Jalur)</option>
+                <option value="-6.937560,107.60617">(Lumayan deket Jalur)</option>
             </select>
-            <b>In between: </b>
+            <b>In between <sub style="color:red;">(C)</sub>: </b>
             <select id="between">
-                <option value="-6.9481023,107.6065922">A (Start)</option>
-                <option value="-6.937724999999999,107.6124936">B (End)</option>
-                <option value="-6.938891,107.60621" selected>C (Dalem Jalur)</option>
-                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
-                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+                <option value="-6.9481023,107.6065922">(Start)</option>
+                <option value="-6.937724999999999,107.6124936">(End)</option>
+                <option value="-6.938891,107.60621" selected>(Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">(Luar Jalur)</option>
+                <option value="-6.937560,107.60617">(Lumayan deket Jalur)</option>
             </select>
             <button id="check">Check</button>
         </div>
@@ -67,11 +67,12 @@
             <li>End point</li>
             <li>Between point?</li>
         </ol>
+        Status : <b id="statusna">(none)</b><br>
         Log : <br>
         <textarea cols="100%" rows="10" id="log"></textarea><br>
         <button onclick="clearLog()">Clear Log</button>
         <script>
-            var markers = [];
+            var markers = null;
 
             function clearLog(){
                 document.getElementById("log").value = "";
@@ -88,7 +89,7 @@
                 directionsDisplay.setMap(map);
 
                 var onChangeHandler = function() {
-                    checkBetween(directionsService, directionsDisplay, map, document.getElementById('start'), document.getElementById('end'), document.getElementById('between'));
+                    checkBetween(directionsService, directionsDisplay, map, document.getElementById('start').value, document.getElementById('end').value, document.getElementById('between').value);
                 };
                 // document.getElementById('start').addEventListener('change', onChangeHandler);
                 // document.getElementById('end').addEventListener('change', onChangeHandler);
@@ -97,7 +98,7 @@
 
             async function checkBetween(directionsService, directionsDisplay, map, pointA, pointB, pointC){
                 a = await calculateRoute(directionsService, directionsDisplay, pointA, pointB, true);
-                await displayMarkerBetween(map);
+                await displayMarkerBetween(directionsService, directionsDisplay, map, pointC);
                 b = await calculateRoute(directionsService, directionsDisplay, pointA, pointC, false);
                 c = await calculateRoute(directionsService, directionsDisplay, pointC, pointB, false);
                 
@@ -106,31 +107,41 @@
                 console.log(c);
                     
                 // append
+                var sama = (parseInt(b+c)==a);
                 var textNa="";
+                
+                if(sama){
+                    document.getElementById("statusna").innerHTML = "Di dalem polyline";
+                }else{
+                    document.getElementById("statusna").innerHTML = "Di luar polyline";
+                }
+
                 textNa += "Rumus : ("+b+"+"+c+")=="+a+"\n";
-                textNa += "Hasil : "+parseInt(b+c)+"=="+a+" = "+(parseInt(b+c)==a)+"\n";
-                textNa += "Berada dalam jalur? "+(parseInt(b+c)==a)+"\n";
+                textNa += "Hasil : "+parseInt(b+c)+"=="+a+" = "+sama+"\n";
+                textNa += "Berada dalam jalur? "+sama+"\n";
                 textNa += "=========================================================\n";
                 document.getElementById("log").value += textNa;
             }
 
             const calculateRoute = (directionsService, directionsDisplay, dist1, dist2, display) => (new Promise((resolve,reject) => {
                 directionsService.route({
-                    origin: dist1.value,
-                    destination: dist2.value,
+                    origin: dist1,
+                    destination: dist2,
                     travelMode: 'DRIVING'
                 }, function(response, status) {
                     if (status === 'OK') {
-                        var start = dist1;
-                        var startSelect = start.options[start.selectedIndex];
-                        var end = dist2;
-                        var endSelect = end.options[end.selectedIndex];
+                        console.log(response);
+                        // var start = dist1;
+                        // var startSelect = start.options[start.selectedIndex];
+                        // var end = dist2;
+                        // var endSelect = end.options[end.selectedIndex];
 
-                        var textNa;
+                        // var textNa;
 
-                        textNa = "Distance ["+startSelect.text+" - "+endSelect.text+"] : "+response.routes[0].legs[0].distance.value+"\n";
+                        textNa = "Distance ["+response.routes[0].legs[0].start_address+" - "+response.routes[0].legs[0].end_address+"] = "+response.routes[0].legs[0].distance.value+"\n";
+                        textNa += "------------------------\n";
 
-                        // append
+                        // // append
                         document.getElementById("log").value += textNa;
 
                         if(display){
@@ -145,18 +156,18 @@
                 });
             }))
 
-            function displayMarkerBetween(map){
+            function displayMarkerBetween(directionsService, directionsDisplay, map, pointC){
                 var between = document.getElementById("between");
                 var betweenSelect = between.options[between.selectedIndex];
-                var kordinatBetween = betweenSelect.value.split(",");
+                var kordinatBetween = pointC.split(",");
                 
                 // remove marker sbelumnya
-                for (var i = 0; i < markers.length; i++) {
-                    markers[i].setMap(null);
+                if(markers!=null){
+                    markers.setMap(null);
                 }
 
                 var markerBetween = new google.maps.Marker({
-                    // draggable: true,
+                    draggable: true,
                     position: { lat: parseFloat(kordinatBetween[0]), lng: parseFloat(kordinatBetween[1]) },
                     map: map,
                     title: betweenSelect.text,
@@ -167,14 +178,18 @@
                         content: betweenSelect.text
                     }).open(map, markerBetween);
                 });
-                markers.push(markerBetween);
+                markers = markerBetween;
 
-                // google.maps.event.addListener(markerBetween, 'dragend', function(){
-                //     // geocodePosition(markerBetween.getPosition());
-                // });
+                google.maps.event.addListener(markers, 'dragend', function(evt){
+                    betweenKordinat = evt.latLng.lat()+","+evt.latLng.lng();
+                    console.log(betweenKordinat);
+                    checkBetween(directionsService, directionsDisplay, map, document.getElementById('start').value, document.getElementById('end').value, betweenKordinat);
+                });
 
                 // append
-                document.getElementById("log").value += "Marker between displayed.\n";
+                textNa = "Marker between displayed.\n";
+                textNa += "------------------------\n";
+                document.getElementById("log").value += textNa;
             }
             
         </script>
