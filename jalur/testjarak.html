@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        <title>Check directions between two point</title>
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+            #map {
+                height: 48%;
+            }
+            /* Optional: Makes the sample page fill the window. */
+            html, body {
+                height: 100%;
+                /* margin: 0;
+                padding: 0; */
+            }
+            #floating-panel {
+                position: absolute;
+                top: 10px;
+                left: 25%;
+                z-index: 5;
+                background-color: #fff;
+                padding: 5px;
+                border: 1px solid #999;
+                text-align: center;
+                font-family: 'Roboto','sans-serif';
+                line-height: 30px;
+                padding-left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="floating-panel">
+            <b>Start: </b>
+            <select id="start">
+                <option value="-6.9481023,107.6065922" selected>A (Start)</option>
+                <option value="-6.937724999999999,107.6124936">B (End)</option>
+                <option value="-6.938891,107.60621">C (Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
+                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+            </select>
+            <b>End: </b>
+            <select id="end">
+                <option value="-6.9481023,107.6065922">A (Start)</option>
+                <option value="-6.937724999999999,107.6124936" selected>B (End)</option>
+                <option value="-6.938891,107.60621">C (Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
+                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+            </select>
+            <b>In between: </b>
+            <select id="between">
+                <option value="-6.9481023,107.6065922">A (Start)</option>
+                <option value="-6.937724999999999,107.6124936">B (End)</option>
+                <option value="-6.938891,107.60621" selected>C (Dalem Jalur)</option>
+                <option value="-6.937526,107.60596">D (Luar Jalur)</option>
+                <option value="-6.937560,107.60617">E (Lumayan deket Jalur)</option>
+            </select>
+            <button id="check">Check</button>
+        </div>
+        <div id="map"></div>
+        Rumus : <code>distance(A, C) + distance(C, B) == distance(A, B)</code><br>
+        Keterangan : 
+        <ol type="A">
+            <li>Start point</li>
+            <li>End point</li>
+            <li>Between point?</li>
+        </ol>
+        Log : <br>
+        <textarea cols="100%" rows="10" id="log"></textarea><br>
+        <button onclick="clearLog()">Clear Log</button>
+        <script>
+            var markers = [];
+
+            function clearLog(){
+                document.getElementById("log").value = "";
+            }
+
+            function initMap() {
+                var directionsService = new google.maps.DirectionsService;
+                var directionsDisplay = new google.maps.DirectionsRenderer;
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: {lat: -6.939086, lng: 107.60617}
+                });
+                
+                directionsDisplay.setMap(map);
+
+                var onChangeHandler = function() {
+                    checkBetween(directionsService, directionsDisplay, map, document.getElementById('start'), document.getElementById('end'), document.getElementById('between'));
+                };
+                // document.getElementById('start').addEventListener('change', onChangeHandler);
+                // document.getElementById('end').addEventListener('change', onChangeHandler);
+                document.getElementById('check').addEventListener('click', onChangeHandler);
+            }
+
+            async function checkBetween(directionsService, directionsDisplay, map, pointA, pointB, pointC){
+                a = await calculateRoute(directionsService, directionsDisplay, pointA, pointB, true);
+                await displayMarkerBetween(map);
+                b = await calculateRoute(directionsService, directionsDisplay, pointA, pointC, false);
+                c = await calculateRoute(directionsService, directionsDisplay, pointC, pointB, false);
+                
+                console.log(a);
+                console.log(b);
+                console.log(c);
+                    
+                // append
+                var textNa="";
+                textNa += "Rumus : ("+b+"+"+c+")=="+a+"\n";
+                textNa += "Hasil : "+parseInt(b+c)+"=="+a+" = "+(parseInt(b+c)==a)+"\n";
+                textNa += "Berada dalam jalur? "+(parseInt(b+c)==a)+"\n";
+                textNa += "=========================================================\n";
+                document.getElementById("log").value += textNa;
+            }
+
+            const calculateRoute = (directionsService, directionsDisplay, dist1, dist2, display) => (new Promise((resolve,reject) => {
+                directionsService.route({
+                    origin: dist1.value,
+                    destination: dist2.value,
+                    travelMode: 'DRIVING'
+                }, function(response, status) {
+                    if (status === 'OK') {
+                        var start = dist1;
+                        var startSelect = start.options[start.selectedIndex];
+                        var end = dist2;
+                        var endSelect = end.options[end.selectedIndex];
+
+                        var textNa;
+
+                        textNa = "Distance ["+startSelect.text+" - "+endSelect.text+"] : "+response.routes[0].legs[0].distance.value+"\n";
+
+                        // append
+                        document.getElementById("log").value += textNa;
+
+                        if(display){
+                            directionsDisplay.setDirections(response);
+                        }
+
+                        resolve(response.routes[0].legs[0].distance.value);
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
+                        resolve(0);
+                    }
+                });
+            }))
+
+            function displayMarkerBetween(map){
+                var between = document.getElementById("between");
+                var betweenSelect = between.options[between.selectedIndex];
+                var kordinatBetween = betweenSelect.value.split(",");
+                
+                // remove marker sbelumnya
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(null);
+                }
+
+                var markerBetween = new google.maps.Marker({
+                    // draggable: true,
+                    position: { lat: parseFloat(kordinatBetween[0]), lng: parseFloat(kordinatBetween[1]) },
+                    map: map,
+                    title: betweenSelect.text,
+                    label: "C"
+                });
+                markerBetween.addListener('click', function() {
+                    new google.maps.InfoWindow({
+                        content: betweenSelect.text
+                    }).open(map, markerBetween);
+                });
+                markers.push(markerBetween);
+
+                // google.maps.event.addListener(markerBetween, 'dragend', function(){
+                //     // geocodePosition(markerBetween.getPosition());
+                // });
+
+                // append
+                document.getElementById("log").value += "Marker between displayed.\n";
+            }
+            
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbGgR7Bl-IlAcTeobZwk8fEk0u6sQRkW0&callback=initMap">
+        </script>
+    </body>
+</html>
