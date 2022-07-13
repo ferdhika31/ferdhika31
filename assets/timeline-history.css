@@ -1,0 +1,242 @@
+/* th = transaction-history */
+
+.th-summary-container {
+	min-height: 98px;
+	align-items: center;
+	justify-content: center;
+	background-color: #89409714;
+	border-radius: 10px;
+	margin: 0px;
+	padding: 8px;
+}
+
+.th-summary-text-title {
+	color: #894097;
+}
+
+.th-summary-text-content {
+	color: #894097;
+	font-weight: 700;
+}
+
+.th-item-container {
+	min-height: 180px;
+	margin: 0px;
+	padding: 0px;
+	align-items: top;
+}
+
+.th-item-icon-main {
+	width: 52px;
+	object-fit: contain;
+}
+
+.th-item-timeline-container {
+	position: relative;
+	width: 24px;
+	justify-content: center;
+}
+
+.th-item-timeline-container-start {
+	position: relative;
+	width: 24px;
+	justify-content: center;
+	padding-top: 12px;
+}
+
+.th-item-timeline-line {
+	background-color: #c4c4c4;
+	width: 2px;
+	height: 100%;
+	margin-left: 11px;
+}
+
+.th-item-timeline-line-end {
+	background-color: #c4c4c4;
+	width: 2px;
+	height: 14px;
+	margin-left: 11px;
+}
+
+.th-item-timeline-node {
+	position: absolute;
+	top: 10px;
+	height: 24px;
+	width: 24px;
+	border-radius: 50%;
+}
+
+.th-item-status-container {
+	width: 100%;
+	height: 44px;
+	border-radius: 50px;
+	align-items: center;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+.th-item-status {
+	text-align: left;
+	font-size: 14px;
+	font-weight: 600;
+	color: #000000;
+}
+
+.th-item-dates {
+	text-align: right;
+	font-size: 13px;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.th-node-order {
+	background-color: #894097 !important;
+}
+
+.th-node-billing {
+	background-color: #ff5722 !important;
+}
+
+.th-node-payment {
+	background-color: #4caf50 !important;
+}
+
+.th-node-invoice {
+	background-color: #01579b !important;
+}
+
+.th-node-tax-invoice {
+	background-color: #6e7981 !important;
+}
+
+.th-node-receipt {
+	background-color: #6e7981 !important;
+}
+
+.th-status-order {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#894097 100%
+	);
+}
+
+.th-status-order-danger {
+	background: linear-gradient(
+		90deg,
+		rgba(237, 172, 180, 0.17) 29%,
+		#894097 100%
+	);
+}
+
+.th-status-billing {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#ff6b3d 100%
+	);
+}
+
+.th-status-billing-danger {
+	background: linear-gradient(90deg, rgba(235, 144, 155, 0) 1%, #ff6b3d 100%);
+}
+
+.th-status-payment {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#87b84f 100%
+	);
+}
+
+.th-status-invoice {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#1675e0 100%
+	);
+}
+
+.th-status-invoice-warning {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 193, 7, 0.4) 29%,
+		#1675e0 100%
+	);
+}
+
+.th-status-invoice-danger {
+	background: linear-gradient(
+		90deg,
+		rgba(230, 136, 136, 0.4) 29%,
+		#1675e0 100%
+	);
+}
+
+.th-status-tax-invoice {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#7b7b7b 100%
+	);
+}
+
+.th-status-tax-invoice-danger {
+	background: linear-gradient(
+		90deg,
+		rgba(249, 197, 194, 0.29) 29%,
+		#7b7b7b 100%
+	);
+}
+
+.th-status-receipt {
+	background: linear-gradient(
+		90deg,
+		rgba(147, 225, 235, 0.29) 29%,
+		#7b7b7b 100%
+	);
+}
+
+.th-status-receipt-danger {
+	background: linear-gradient(
+		90deg,
+		rgba(249, 197, 194, 0.29) 29%,
+		#7b7b7b 100%
+	);
+}
+
+.th-text {
+	font-weight: 400;
+	font-size: 14px;
+	color: #000000;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.th-text-16 {
+	font-weight: 400;
+	font-size: 16px;
+	color: #000000;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.th-text-duration {
+	font-weight: 600;
+	font-size: 14px;
+	color: #000000;
+	margin-top: 0px;
+	margin-bottom: 4px;
+}
+
+.th-text-start {
+	font-weight: 600;
+	font-size: 14px;
+	color: #08951f;
+}
+
+.th-text-completed {
+	font-weight: 600;
+	font-size: 14px;
+	color: #f30000;
+}
