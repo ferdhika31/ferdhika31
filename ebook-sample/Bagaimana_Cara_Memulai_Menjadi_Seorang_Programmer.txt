@@ -1,0 +1,48 @@
+Halo! Selamat datang.
+
+Semoga hari anda menyenangkan dan tetap dalam keadaan semangat.
+
+Pada kesempatan kali ini saya ingin membagikan sebuah tulisan tentang bagaimana cara memulai menjadi seorang programmer. Tulisan ini merupakan postingan pertama saya dan semoga dapat bermanfaat bagi teman-teman semua.
+
+Saat ini sudah banyak website atau video youtube yang membagikan tips-tips mengenai cara menjadi programmer. Teman-teman dapat dengan mudah mencarinya. Namun, di sini saya akan berbagi dari pengalaman saya sendiri tentang bagaimana memulai untuk menjadi seorang programmer.
+
+Tanpa perlu basa-basi lagi yuk kita bahas.
+
+Apa/siapa itu programmer ?
+Sebelumnya mari kita lihat apa/siapa itu programmer. Sederhananya Programmer merupakan seseorang yang mempunyai kemampuan untuk menyelesaikan masalah dengan menggunakan bahasa pemrograman. Nah pekerjaannya ini disebut dengan programming sedangkan solusi yang dihasilkan untuk menyelesaikan masalah disebut dengan program atau aplikasi.
+
+Apa modal awal yang harus anda miliki untuk menjadi seorang programmer ?
+Kompoter ?? laptop ?? bukan yaa :D
+
+Memang benar kita memerlukan komputer atau laptop namun bukan itu yang ingin saya sampaikan. Terus apa? berikut ini modal yang perlu teman-teman miliki untuk memulai menjadi seorang programmer:
+
+1. Matematika
+Kenapa matematika ? karena matematika mengajarkan kita berpikir untuk menyelesaikan masalah. Masak iya pas ketemu error di cuekin ;) kita harus berpikir apa solusinya supaya error tidak terjadi lagi.
+
+Di suatu interview saya pernah ditanya oleh CTO perusahaan apakah saya menyukai matematika. Pada saat itu saya menjawab saya tidak terlalu menyukai matematika, namun saya berasal dari SMK dengan jurusan yang menuntut saya untuk bisa matematika, jadi matematika merupakan hal yang wajib untuk dipahami bagi saya. Setelah interview selesai CTO itu menjelaskan bahwa programmer yang tidak menyukai matematika biasanya akan sulit beradaptasi dengan teknologi baru yang mana pada dunia profesional kita dituntut agar dapat menyelesaikan masalah dengan teknologi apapun.
+
+Tapi tenang bagi teman-teman yang tidak menyukai matematika tidak apa-apa kok, karena yang diambil dari matematika bukan rumus-rumusnya tapi konsep berpikirnya. berpikir bagaimana dapat menyelesaikan suatu masalah secara sistematis. Namun, ada juga bidang IT tertentu yang memerlukan programmer dengan matematika yang cukup advanced seperti data science.
+
+2. Bahasa Inggris
+Kalo menurut saya tidak bisa matematika masih oke asalkan paham operasi sederhana seperti tambah, kurang, bagi, dan kali. Tapi bahasa inggris adalah yang hal wajib yang harus teman-teman miliki. Bahasa inggris berguna saat programmer mempelajari suatu teknologi dengan membaca dokumentasinya. Selain itu dengan bahasa inggris yang baik dapat membuat teman-teman mempunyai nilai lebih saat masuk ke dunia profesional dan tidak menutup kemungkinan teman-teman mungkin akan berkerja dengan orang asing nantinya.
+
+Apa yang harus dipelajari ?
+Jika teman-teman sudah mempunyai modal seperti yang dibahas diatas maka saatnya untuk memulai. Apa saja yang harus dipelajari:
+
+1. Logika matematika
+Komputer tidak memahami gambar, video, suara, bahkan kata-kata yang kita ketik pada pesan whatsapps. komputer hanya memahami dua hal 1 dan 0. Gambar, video, dan teks adalah interpretasi dari kumpulan angka 1 dan 0. Oleh karena itu untuk memahaminya kita perlu belajar logika matematika atau juga biasa disebut dengan logika informatika. Logika matematika sendiri merupakan suatu mata kuliah yang terdapat pada jurusan IT. Namun jika teman-teman bukan berasal dari jurusan IT atau tidak kuliah. Teman-teman dapat mencari sumber belajar lain dari internet.
+
+Bagi saya pribadi hal yang sangat bermanfaat dari mata kuliah ini yang dapat kita terapkan dalam programming adalah materi yang membahas hubungan sebab akibat. karena konsepnya dapat kita pakai saat proses debugging jika terjadi error pada program yang sedang kita kerjakan.
+
+2. Algoritma
+Algoritma sederhananya adalah sebuah resep masakan yang mempunyai bahan dan langkah-langkah dalam membuat suatu makanan. Dimana untuk membuat makanan tersebut kita harus mengikuti langkah-langkahnya dari awal hingga akhir sesuai urutan. Konsep ini juga dipakai dalam programming untuk menciptakan suatu aplikasi atau program sederhana.
+
+3. Pilih dan tekuni satu bahasa pemrograman
+Setelah mempelajari logika matematika dan algoritma maka teman-teman sudah mempunyai fondasi yang kuat untuk mempelajari bahasa pemrograman. Mulailah untuk memilih dan pelajari satu bahasa pemrograman. Jadilah expert di bahasa tersebut. karena pada hakikatnya semua bahasa pemrograman itu sama hanya sintaksnya saja yang sedikit berbeda.
+
+Saat ini ada banyak bahasa pemrograman yang tersedia. Bahasa-bahasa tesebut juga memiliki tujuan, kelebihan, dan kekurangan masing-masing. Jadi pastikan teman-teman memahami dulu tujuan atau fungsi dari bahasa pemrograman tersebut sebelum mulai mempelajarinya.
+
+Sekian dulu untuk tulisan kali ini.
+
+Semoga bermanfaat :)
+
