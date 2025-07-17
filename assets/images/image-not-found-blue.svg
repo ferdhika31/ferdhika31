@@ -1,0 +1,28 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .icon { fill: none; stroke: #1A73E8; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+    .text { fill: #1A73E8; font-family: sans-serif; text-anchor: middle; }
+  </style>
+
+  <!-- RPL4rt text at the top -->
+  <text x="256" y="48" font-size="36" class="text">RPL4rt</text>
+
+  <!-- Image placeholder box -->
+  <rect x="128" y="80" width="256" height="160" class="icon"/>
+
+  <!-- Mountain inside the box -->
+  <polyline points="144,224 208,160 272,224" class="icon"/>
+
+  <!-- Sun or moon -->
+  <circle cx="336" cy="144" r="12" class="icon"/>
+
+  <!-- Crossed X -->
+  <line x1="304" y1="176" x2="352" y2="224" class="icon"/>
+  <line x1="352" y1="176" x2="304" y2="224" class="icon"/>
+
+  <!-- 404 Text -->
+  <text x="256" y="320" font-size="64" class="text">404</text>
+
+  <!-- IMAGE NOT FOUND Text -->
+  <text x="256" y="376" font-size="32" class="text">IMAGE NOT FOUND</text>
+</svg>
