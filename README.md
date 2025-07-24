@@ -14,4 +14,8 @@ I'm a Handsome Man :)
 
 ![github stats](https://github-readme-stats.vercel.app/api?username=ferdhika31&show_icons=true&count_private=true&include_all_commits)
 
+## Blog posts
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
+
 <br/>
