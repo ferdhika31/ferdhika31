@@ -12,3 +12,5 @@ I'm a Handsome Man :)
 - Email: fer@dika.web.id
 - Web: https://dika.web.id
 
+## My Holopin Badge
+[![An image of @ferdhika's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/ferdhika)](https://holopin.io/@ferdhika)
